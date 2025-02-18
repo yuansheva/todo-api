@@ -1,0 +1,153 @@
+definitions:
+  models.Todo:
+    properties:
+      brand:
+        type: string
+      due_date:
+        type: string
+      id:
+        type: integer
+      payment:
+        type: integer
+      platform:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/todos:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all To-Do items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Todo'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get all To-Do items
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: Create a new To-Do item
+      parameters:
+      - description: To-Do Item
+        in: body
+        name: to-do
+        required: true
+        schema:
+          $ref: '#/definitions/models.Todo'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create a new To-Do item
+      tags:
+      - todos
+  /api/todos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a To-Do item by ID
+      parameters:
+      - description: To-Do ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deleted successfully
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Failed to delete
+          schema:
+            type: string
+      summary: Delete a To-Do item
+      tags:
+      - todos
+    get:
+      consumes:
+      - application/json
+      description: Get a specific To-Do item by ID
+      parameters:
+      - description: To-Do ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "404":
+          description: To-Do not found
+          schema:
+            type: string
+      summary: Get To-Do item by ID
+      tags:
+      - todos
+    put:
+      consumes:
+      - application/json
+      description: Update an existing To-Do item by ID
+      parameters:
+      - description: To-Do ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: To-Do Item
+        in: body
+        name: to-do
+        required: true
+        schema:
+          $ref: '#/definitions/models.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: To-Do not found
+          schema:
+            type: string
+      summary: Update an existing To-Do item
+      tags:
+      - todos
+swagger: "2.0"

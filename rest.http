@@ -1,0 +1,45 @@
+# Coba API
+
+# Create todo
+curl -X POST http://localhost:8080/api/todos -H "Content-Type: application/json" -d '{
+    "title": "Buat Postingan Instagram",
+    "brand": "Nike",
+    "platform": "Instagram",
+    "due_date": "2024-02-20",
+    "payment": 500000,
+    "status": "pending"
+}'
+
+###
+
+# Get All Todo
+
+curl -X GET http://localhost:8080/api/todos
+
+
+###
+
+# Get Todo By Id
+
+curl -X GET http://localhost:8080/api/todos/1
+
+###
+
+# Update Todo By Id
+
+curl -X PUT http://localhost:8080/api/todos/3 -H "Content-Type: application/json" -d '{
+    "title": "Update Postingan Instagram",
+    "brand": "Nike",
+    "platform": "Instagram",
+    "due_date": "2024-02-20",
+    "payment": 500000,
+    "status": "completed"
+}'
+
+###
+
+# Delete Todo By Id
+
+curl -X DELETE http://localhost:8080/api/todos/3
+
+
