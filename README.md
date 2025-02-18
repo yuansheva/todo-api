@@ -13,5 +13,5 @@ Proyek ini dibangun dengan teknologi berikut:
 - **Create Post**: Pengguna dapat menambahkan todo-list.
 - **Read All Post**: Pengguna dapat melihat keseluruan todo-list.
 - **Read Post By Id**: Pengguna dapat melihat todo-list sesuai id.
-- **Delete Post**: Pengguna menghapus todo-list.
+- **Delete Post**: Pengguna dapat menghapus todo-list.
 
